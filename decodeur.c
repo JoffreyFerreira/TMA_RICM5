@@ -48,21 +48,25 @@ int main(int argc, char **argv){
 
 			if(charData==NULL){
 				printf("null trouvé à l'indice : %d\n", indice);
-				indice += 12;
+				indice += 8;
+				printf("%d indice \n", indice);
 				break;
 			}
 			nameBinary[indiceTabName] = charData;
 			indice += 4;
 			indiceTabName++;
 		}
-		printf("%s\n", nameBinary);
+		// printf("%s\n", nameBinary);
+
 
 		unsigned char flow[height*width/4];
-		for (int i = indice; i < indice+taille*4; i+=4){
-			flow[i/4]=((data[i]&0x3)<<6)+((data[i+1]&0x3)<<4)+((data[i+2]&0x3)<<2)+(data[i+3]&0x3);
+		int compteur = 0;
+		// i = indice + 64 
+		for (int i = 144; i < indice+taille*4; i+=4){
+			flow[compteur]=((data[i]&0x3)<<6)+((data[i+1]&0x3)<<4)+((data[i+2]&0x3)<<2)+(data[i+3]&0x3);
+			compteur++;
 		}
-
-		store_pixmap(nameBinary, flow, 350, 233);
+		store_jpg(nameBinary, flow, 350, 233);
 
 		return 1;
 

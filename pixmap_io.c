@@ -299,6 +299,19 @@ void store_pixmap(char *filename, unsigned char *data, int width, int height)
   close(fd);
 }
 
+void store_jpg(char *filename, unsigned char *data, int width, int height)
+{
+  int fd;
+  
+  if( (fd = open_write(filename)) < 0 )
+    return;
+  // put_pgm_header(fd, MAGIC_PGM, width, height, filename);
+  store_data(fd, data, (long)width*height);
+  close(fd);
+}
+
+
+
 void store_RGB_pixmap(char *filename, unsigned char *R_data, unsigned char *G_data, unsigned char *B_data, int width, int height)
 {
   int fd;
