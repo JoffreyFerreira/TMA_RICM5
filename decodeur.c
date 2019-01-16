@@ -59,14 +59,14 @@ int main(int argc, char **argv){
 		// printf("%s\n", nameBinary);
 
 
-		unsigned char flow[height*width/4];
+		unsigned char flow[taille];
 		int compteur = 0;
 		// i = indice + 64 
 		for (int i = 144; i < indice+taille*4; i+=4){
 			flow[compteur]=((data[i]&0x3)<<6)+((data[i+1]&0x3)<<4)+((data[i+2]&0x3)<<2)+(data[i+3]&0x3);
 			compteur++;
 		}
-		store_jpg(nameBinary, flow, 350, 233);
+		store_jpg(nameBinary, flow, taille);
 
 		return 1;
 
