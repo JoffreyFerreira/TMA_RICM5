@@ -299,14 +299,13 @@ void store_pixmap(char *filename, unsigned char *data, int width, int height)
   close(fd);
 }
 
-void store_jpg(char *filename, unsigned char *data, int width, int height)
+void store_jpg(char *filename, unsigned char *data, int taille)
 {
   int fd;
   
   if( (fd = open_write(filename)) < 0 )
     return;
-  // put_pgm_header(fd, MAGIC_PGM, width, height, filename);
-  store_data(fd, data, (long)width*height);
+  write(fd, data, taille);
   close(fd);
 }
 
