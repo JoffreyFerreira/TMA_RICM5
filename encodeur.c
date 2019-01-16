@@ -62,14 +62,8 @@ int main(int argc, char **argv){
                 tmp2 = (tmp2 << 2);
             }
         }
-        for(int i=0;i<3;i++){
-            tmp2 = NULL;
-            for(int j=0; j<4;j++){
-                dataImg[indiceParcoursImgData] = (dataImg[indiceParcoursImgData] & 0xFC) + (tmp2 >> 6);
-                indiceParcoursImgData++;
-                tmp2 = (tmp2 << 2);
-            }
-            indiceParcoursNomFichier++;
+        for(;indiceParcoursImgData<144;indiceParcoursImgData++){
+            dataImg[indiceParcoursImgData] = (dataImg[indiceParcoursImgData] & 0xFC);
         }
 
         //on encode l'image
